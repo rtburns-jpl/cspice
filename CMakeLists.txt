@@ -10,7 +10,7 @@ add_subdirectory(include)
 
 target_include_directories(cspice PUBLIC
     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/cspice
+    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/cspice>
     )
 install(TARGETS cspice
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
