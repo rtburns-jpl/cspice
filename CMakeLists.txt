@@ -1,12 +1,20 @@
 cmake_minimum_required(VERSION 3.13)
 
-project(cspice LANGUAGES C)
+project(cspice
+        VERSION 66.1
+        LANGUAGES C
+        )
 
 include(GNUInstallDirs)
 
 add_library(cspice SHARED)
 add_subdirectory(src)
 add_subdirectory(include)
+
+set_target_properties(cspice PROPERTIES
+    SOVERSION ${PROJECT_VERSION_MAJOR}
+    VERSION   ${PROJECT_VERSION}
+    )
 
 target_include_directories(cspice PUBLIC
     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
