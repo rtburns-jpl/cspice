@@ -17,6 +17,13 @@ install(TARGETS cspice
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/cspice
     )
 
+# Agree with new CMP0090 behavior (no export by default)
+if(CMAKE_VERSION VERSION_LESS 3.15 AND NOT CMAKE_EXPORT_PACKAGE_REGISTRY)
+    set(CMAKE_EXPORT_NO_PACKAGE_REGISTRY ON)
+endif()
+export(PACKAGE cspice)
+export(TARGETS cspice NAMESPACE cspice:: FILE cspice-targets.cmake)
+
 add_library(cspice::cspice ALIAS cspice)
 
 # install config file for find_package
