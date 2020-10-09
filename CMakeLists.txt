@@ -7,7 +7,11 @@ project(cspice
         )
 bpl8_project_setup()
 
-include(GNUInstallDirs)
+include(CheckCCompilerFlag)
+check_c_compiler_flag(-Wno-implicit-int HAVE_WNO_IMPLICIT_INT)
+if(HAVE_WNO_IMPLICIT_INT)
+    add_compile_options(-Wno-implicit-int)
+endif()
 
 bpl8_add_library(cspice SHARED)
 add_subdirectory(src)
